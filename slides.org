@@ -1,4 +1,4 @@
-#+REVEAL_ROOT: ./reveal.js/3.0.0/
+#+REVEAL_ROOT: "./reveal.js/3.0.0/"
 #+OPTIONS: toc:nil timestamp:nil reveal_slide_number:nil num:nil
 #+REVEAL_TRANS: Fade
 #+PROPERTY: header-args    :exports both
