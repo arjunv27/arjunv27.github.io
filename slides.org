@@ -1,0 +1,203 @@
+#+REVEAL_ROOT: http://cdn.jsdelivr.net/reveal.js/3.0.0/
+#+OPTIONS: toc:nil timestamp:nil reveal_slide_number:nil num:nil
+#+REVEAL_TRANS: Fade
+#+PROPERTY: header-args    :exports both
+#+ATTR_HTML: border="2" rules="all" frame="border"
+#+TITLE:  Evolutionary Karma
+#+SUBTITLE: chimp
+#+AUTHOR: Arjun Velagapudi
+#+EMAIL: arjunvelagapudi@protonmail.com
+#+DATE: April 26, 2019
+
+* Be the basis for other startups
+
+* Thanks
+   Brendan Tschuy
+
+   Ian Winter
+
+
+#+BEGIN_NOTES
+   Also thank Technology Association of Oregon
+#+END_NOTES
+* Inclusive Localism
+  [[https://twitter.com/BloombergTV/status/1085879850664103936][Opposite of Exclusive Globalism]]
+
+
+
+  [[https://www.wsj.com/articles/the-third-pillar-review-whywashington-is-the-problem-11551916834][Strengthing The Third Pillar]]
+** A New Foundation
+   
+Crowdfunded Directed Evolution forms something like a community-driven delocalized [[https://www.ycombinator.com/][Y Combinator]]
+
+
+   Global Horizontal Scalability (many communities developing and collaborating)   
+
+   [[http://stanford.edu/~marinka/slides/lifetree-cehg19.pdf][Developing resiliance through small-world type networks]] opposed to 2big2fail type crisis
+   
+* Crowdfunded Directed Evolution
+#+DOWNLOADED: https://www.bsse.ethz.ch/bpl/research/directed-evolution/_jcr_content/par/textimage/image.imageformat.text50percent.273693174.png @ 2019-04-26 02:35:59
+[[file:Crowdfunded_Directed_Evolution/image.imageformat.text50percent.273693174_2019-04-26_02-35-58.png]]
+
+  * BeyondCorp Security Model
+  * Evolutionary Architecture
+  * Regulated Crowdfunds
+
+** BeyondCorp
+
+     [[https://www.beyondcorp.com/][Zero-Trust Security Framework modeled by Google
+]]
+
+     allows for the creation of a new type of cloud-native corporations -- decentralized with centralized attributes
+     
+** Evolutionary Architecture
+     [[http://nealford.com/downloads/Evolutionary_Architecture_Keynote_by_Neal_Ford.pdf][Enable Incremental Change over Time based on Consumer Feedback]]
+
+
+     [[https://landscape.cncf.io/][Lots of Growth and Support as Tooling Develops]]
+
+** Regulated Crowdfunds
+   * SEC's Response to ICOs
+   * Provides avenue to investment for all types of ventures
+     * Food truck looking for funding to scale business
+     * FinTech company looking to build smart contracts to fund hemp farmers on any blockchain
+     * Co-ops
+   * Potential platform for STO's 
+   * Potential for global horizontal scalability
+       
+* Karma Trust Protocol
+  A Solution for Decentralized Reputation Management with Bitcoin, GPG, and IPFS
+** Why Bitcoin
+   Data Anchoring
+   * OPReturn
+   * Proof-of-Work
+   * [[https://www.coindesk.com/understanding-dao-hack-journalists][Lower-attack vector]]
+   * Mature community
+** Why IPFS
+   * Great Community
+   * Great Design (Content-addresses fit in Bitcoin OPReturn)
+   * [[https://hackernoon.com/ipfs-and-merkle-forest-a6b7f15f3537][Really Cool Tech with Ambitious Goals]]
+** Quick IPFS Tutorial
+   [[https://docs.ipfs.io/introduction/install/][Install and Init IPFS]] & run daemon
+ #+BEGIN_SRC sh
+     ipfs daemon &
+#+END_SRC
+
+Add file
+#+BEGIN_SRC sh
+     echo "hello world" > hello
+     ipfs add hello
+#+END_SRC
+
+#+RESULTS:
+: added QmT78zSuBmuS4z925WZfrqQ1qHaJ56DQaTfyMUF7F8ff5o hello
+
+** 
+ Get back file -- works on any computer in the world
+ #+BEGIN_SRC sh
+   ipfs cat QmT78zSuBmuS4z925WZfrqQ1qHaJ56DQaTfyMUF7F8ff5o 
+ #+END_SRC
+
+ #+RESULTS:
+ : hello world
+
+
+ Add Directories
+ #+BEGIN_SRC sh
+    ipfs add -r .
+ #+END_SRC
+
+ #+RESULTS:
+ : added QmS4pAajGo9cioE5ufb4fw6W4q5imvrGkeUh99V599Hbai wuji                                                                                                                              
+** 
+list directory content (globally available)
+#+BEGIN_SRC sh 
+   ipfs ls QmS4pAajGo9cioE5ufb4fw6W4q5imvrGkeUh99V599Hbai
+#+END_SRC
+
+#+BEGIN_SRC sh
+Qme8P2Qo3sDk9cP6vP5tDCrqiLmbP7Dn6qNsfuDotcKvVY -    Crowdfunded_Directed_Evolution
+QmYFQ7yTikVEtApGD3SgzRyAnKS6JQTQJ5aSvREMpcu1Qw -     Karma/                 
+QmbFMke1KXqnYyBBWxB74N4c5SBnJMVAiMNRcGu6x1AwQH -     TODOs.org              
+QmT78zSuBmuS4z925WZfrqQ1qHaJ56DQaTfyMUF7F8ff5o   12  hello                  
+QmQ7wnYkJCDuDT1XCYSXa4qccXwvhUAaMBuMZbGJyVTvR2 -     reveal.js/             
+QmbgmDwYXTQskUbHNeuWJG9BkJdUip9xURUm66zdF2REH8 7203  slides.html            
+QmYiwxfBDhpd57JnuojHQPtqckDDDGtNTAhfPNi9S6VsZN 3262  slides.org             
+#+END_SRC
+
+** Creating Karma
+   Two Types of Trust
+     * Mathematical: proof
+     * Human: time
+** Creating Karma
+   Karma uses both
+     * Cryptographic digital signatures + Web-of-Trust
+     * Time through blockchain anchoring
+** Creating Karma
+  #+BEGIN_SRC sh
+   ipfs cat QmT78zSuBmuS4z925WZfrqQ1qHaJ56DQaTfyMUF7F8ff5o 
+ #+END_SRC
+
+ #+RESULTS:
+ : hello world
+  
+#+BEGIN_SRC sh
+   gpg --output hello.sig --detach-sig QmT78zSuBmuS4z925WZfrqQ1qHaJ56DQaTfyMUF7F8ff5o 
+   ipfs add (hello.sig QmT78zSuBmuS4z925WZfrqQ1qHaJ56DQaTfyMUF7F8ff5o)
+#+END_SRC
+
+** Creating Karma
+#+BEGIN_SRC sh
+    gpg --output hello.sig --detach-sig sign hello
+    mkdir helloDir; mv hello.sig hello helloDir
+    ipfs add -r helloDir
+#+END_SRC
+
+#+RESULTS:
+ : added QmT78zSuBmuS4z925WZfrqQ1qHaJ56DQaTfyMUF7F8ff5o helloDir/hello
+ : added QmQYdf2e1RZgz1Nq5WaR6mTAbCxRmEbwdHzG8HaW9tZNeP helloDir/hello.sig
+ : added QmWzGnxLDRYzvkTLRrZKJ5zWN4NhJDCww5hiD3LG9UUedY helloDir
+
+** Creating Karma
+   
+#+BEGIN_SRC sh
+  ipfs get QmWzGnxLDRYzvkTLRrZKJ5zWN4NhJDCww5hiD3LG9UUedY
+  cd QmWzGnxLDRYzvkTLRrZKJ5zWN4NhJDCww5hiD3LG9UUedY
+  gpg --verify QmQYdf2e1RZgz1Nq5WaR6mTAbCxRmEbwdHzG8HaW9tZNeP QmT78zSuBmuS4z925WZfrqQ1qHaJ56DQaTfyMUF7F8ff5o
+#+END_SRC
+
+#+RESULTS:
+ : gpg:                using RSA key DF18B2B9CFA212A16DFFB8B5DBDF5788899788A6
+ : gpg:                issuer "arjunvelagapudi@protonmail.com"
+ : gpg: Good signature from "Arjun Velagapudi <arjunvelagapudi@protonmail.com>" [ultimate]
+
+** Creating Karma
+#+BEGIN_SRC sh
+  git clone https://github.com/coinspark/python-OP_RETURN
+  cd python-OP_RETURN 
+  python send-OP_RETURN.py 149wHUMa41Xm2jnZtqgRx94uGbZD9kPXnS 0.001 QmWzGnxLDRYzvkTLRrZKJ5zWN4NhJDCww5hiD3LG9UUedY
+#+END_SRC
+
+  * Output is a transaction ID
+  * Don't have bitcoind set up -- don't have the fileSpace at the moment (130G+) and 30 days for verification
+
+** Karma
+  * The blockchain provides a timestamp
+  * The digital signature (+web-of-trust) provides identity verification
+
+** Karma
+   Over time -- Trust is Created
+   
+
+   Depends on the quality of data stored and linking to previous data
+   
+** Where to Go From Here
+  Foundational tool:
+     * decentralized yelp / google reviews / etc
+     * new types of credit networks
+     * [[https://www.cs.cmu.edu/~rwh/theses/okasaki.pdf][Foundations for permissioned ledger on IPFS]]
+     * Combine with cosmos.network and dependent types for a new type of dapp
+     * Enterprise utility in verification
+  Research:
+     * Dependent Types to improve mathematical trust
+     * Purely Functional Data Structures -- maps well to IPFS structure
